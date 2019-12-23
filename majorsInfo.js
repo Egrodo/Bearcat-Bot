@@ -28,8 +28,7 @@ module.exports = {
     "SQM": "SQM Major",
     "SOC": "Sociology Major",
     "STA": "Statistics Major",
-    "Undecided": "Major Undecided"
-    
+    "UNDECIDED": "Major Undecided",
   },
   fullToAbbrev: {
     "Accounting Major": "ACC",
@@ -60,6 +59,6 @@ module.exports = {
     "SQM Major": "SQM",
     "Sociology Major": "SOC",
     "Statistics Major": "STA",
-    "Major Undecided": "Undecided"
+    "Major Undecided": "Undecided",
   }
 };
