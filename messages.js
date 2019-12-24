@@ -12,7 +12,8 @@ Feel free to ask any questions.**
 **5)** Please keep conversation topics relevant to their channels. 
 **6)** No NSFW content of ANY KIND OR FORM.
 **7)** No solicitation of illegal substances.`,
-  askMajor: `If you'd like to receive a role you can respond with your (current or intended) major:
+  askMajor: `**If you'd like to receive a role you can respond with your (current or intended) major**:
+
   \`ACC\` for Accounting
   \`ACT\` for Actuarial Science
   \`ART\` for Arts Administration

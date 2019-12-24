@@ -81,7 +81,7 @@ function msgHandler(msg) {
         if (!askedMember || askedMember.id === client.user.id) {
           msg.reply(`Invalid syntax. Type "@BearcatBot askmajor @USER"`);
         } else {
-          msg.channel.send(`Okay, I'll PM ${askedMember.username} for their major.`);
+          msg.channel.send(`PMing ${askedMember.username} for their major.`);
           askedMember.send(messages.askMajor);
         }
         break;
@@ -128,3 +128,5 @@ client.on('guildMemberUpdate', memberUpdateHandler);
 client.login(auth.token);
 
 // TODO: Make command that will let an admin invoke the greeting on any specified user.
+
+//From Saki: Enable periodic scan of all members for a roleless student, if found, apply "Unknown Role" on said member.
