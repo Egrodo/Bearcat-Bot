@@ -135,5 +135,5 @@ client.on('guildMemberUpdate', memberUpdateHandler);
 client.login(auth.token);
 
 //Saki: Extend major assignment flow to begin with Alumni and Grad Students as well.
-//Saki: Periodic check for for role-less members being given "Unknown-Role" role.
+//Saki: Periodic check for for role-less members being given "Unknown-Role" role. 
 //Saki: Self delete user commands and bot response after 1-2 seconds. For example, @Bearcat Bot askmajor @Saki, and the following "Ok, PMing" get deleted after 1-2 seconds.
