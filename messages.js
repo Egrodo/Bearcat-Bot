@@ -13,6 +13,7 @@ Feel free to ask any questions.**
 **6)** No NSFW content of ANY KIND OR FORM.
 **7)** No solicitation of illegal substances.`,
   askMajor: `If you'd like to receive a role you can respond with your (current or intended) major:
+
   \`ACC\` for Accounting
   \`ACT\` for Actuarial Science
   \`ART\` for Arts Administration
@@ -42,5 +43,7 @@ Feel free to ask any questions.**
   \`SOC\` for Sociology
   \`STA\` for Statistics
   \`Undecided\` for Major Undecided
+
+  If you don't see your major, feel free to message one of the admins to have it added.
 `
 }
