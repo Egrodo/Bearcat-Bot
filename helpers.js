@@ -55,4 +55,7 @@ module.exports = {
       return client.users.get(mention);
     }
   },
+  isRedditPostingTime: () => {
+    // TODO: If the time is: 12am, 8am, 4pm, return true. Else return false.
+  },
 };

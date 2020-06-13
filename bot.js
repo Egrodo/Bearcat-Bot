@@ -11,6 +11,7 @@ const {
   isStudentOrGradStudent,
   getUserFromMention,
   userHasRoles,
+  isRedditPostingTime,
 } = require("./helpers.js");
 
 // 1.5 second cooldown to limit spam
@@ -23,8 +24,7 @@ client.on("ready", () => {
 });
 
 /* TODO:
-   - Modify the profRating command to show "would take again", "level of difficulty" , and number of reviews.
-   - Look into fixing @'ing inconsistency. 
+   - Every 8 hours post the top hot post from /r/Baruch
 */
 
 // Assigns the given user the given role. Returns true if successful, false if not.
@@ -214,5 +214,11 @@ const limitedMessageHandler = RateLimiter(COMMAND_COOLDOWN, msgHandler);
 client.on("message", limitedMessageHandler);
 
 client.on("guildMemberUpdate", memberUpdateHandler);
+
+// Also run once on startup of script
+// Every hour check if the current time is within the ranges
+setInterval(() => {
+  const shouldPost = isRedditPostingTime();
+}, 60 * 60 * 1000);
 
 client.login(auth.token);
