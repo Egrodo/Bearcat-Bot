@@ -16,6 +16,8 @@ const {
 
 // 1.5 second cooldown to limit spam
 const COMMAND_COOLDOWN = 1 * 1000;
+// Reddit API link
+const REDDIT_URL = 'https://www.reddit.com/r/Baruch.json' 
 
 // Initialize Discord Bot
 const client = new Discord.Client();
@@ -219,6 +221,26 @@ client.on("guildMemberUpdate", memberUpdateHandler);
 // Every hour check if the current time is within the ranges
 setInterval(() => {
   const shouldPost = isRedditPostingTime();
+  if (!shouldPost) return;
+    Phin({ url: REDDIT_URL, parse: "json" })
+      .then((res) => {
+          redditPost = 0;
+          notsticky(res);
+          
+      })
+   
 }, 60 * 60 * 1000);
+
+// checks to make sure that the top post is not a sticky post
+function notsticky(res){
+  if (res.body.data.children[redditPost].data.stickied == true) {
+      redditPost++;
+      notsticky(res);
+  }
+      else{
+          console.log(res.body.data.children[redditPost].data.url)
+      }
+}
+
 
 client.login(auth.token);
