@@ -58,9 +58,6 @@ module.exports = {
   isRedditPostingTime: () => {
     // If the time is: 6am, 2pm, 10pm, return true. Else return false.
     var time = new Date().getHours();
-    if (time == 6 || time == 14 || time == 22) {
-      return true;
-    }
-      return false;
+    return time == 6 || time == 14 || time == 22
   },
 };
