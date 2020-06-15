@@ -17,7 +17,7 @@ const {
 // 1.5 second cooldown to limit spam
 const COMMAND_COOLDOWN = 1 * 1000;
 // Reddit API link
-const REDDIT_URL = 'https://www.reddit.com/r/Baruch.json' 
+const REDDIT_URL = 'https://www.reddit.com/r/baruch.json?limit=10' 
 
 // Initialize Discord Bot
 const client = new Discord.Client();
@@ -224,23 +224,34 @@ setInterval(() => {
   if (!shouldPost) return;
     Phin({ url: REDDIT_URL, parse: "json" })
       .then((res) => {
-          redditPost = 0;
-          notsticky(res);
+          // variable used to determine which reddit post to take. 
+          // Incremented if post is sticky, reset each time the function is run
+          let REDDIT_POST = 0;
+          notSticky(res);
           
       })
    
 }, 60 * 60 * 1000);
 
 // checks to make sure that the top post is not a sticky post
-function notsticky(res){
-  if (res.body.data.children[redditPost].data.stickied == true) {
-      redditPost++;
-      notsticky(res);
-  }
-      else{
-          console.log(res.body.data.children[redditPost].data.url)
+function notSticky(res){
+  try {
+      const posts = res.body.data.children;
+
+      for (let i = 0; i < posts.length; i++) {
+          if (posts[i].data.stickied === true) continue;
+          else {
+              console.log(`https://reddit.com${posts[i].data.permalink}`)
+              break
+          }
       }
-}
+    
+  } catch (err) {
+      console.error('Failed to retrieve data from Reddit');
+      console.error(err);
+  }
+    
+}  
 
 
 client.login(auth.token);
