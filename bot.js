@@ -224,9 +224,6 @@ setInterval(() => {
   if (!shouldPost) return;
     Phin({ url: REDDIT_URL, parse: "json" })
       .then((res) => {
-          // variable used to determine which reddit post to take. 
-          // Incremented if post is sticky, reset each time the function is run
-          let REDDIT_POST = 0;
           notSticky(res);
           
       })
