@@ -214,11 +214,13 @@ function memberUpdateHandler(oldMember, newMember) {
     }
   }
 }
+// Also run once on startup of script
+// Will post if all conditions are met (time is correct, post is not stickied, post have not been posted)
 const redditInterval = async () => {
   const shouldPost = isRedditPostingTime();
   if (!shouldPost) return;
   try {
-    const res = await Phin({ url: REDDIT_URL, parse: "json" })
+    const res = await Phin({ url: REDDIT_URL, parse: "json" });
     const postList = res.body.data.children;
     let validPost = null;
     let startAt = 0;
@@ -233,11 +235,9 @@ const redditInterval = async () => {
     }
     const channel = await client.channels.get(REDDIT_POSTING_CHANNEL_ID);
     channel.send(validPost);
-    // TODO At this point, validPost will contain a post that needs posting. Post it!
   } catch(error) {
     console.error(error);
-  }
-   
+  } 
 }
 
 
@@ -250,7 +250,7 @@ client.on("message", limitedMessageHandler);
 
 client.on("guildMemberUpdate", memberUpdateHandler);
 
-// Also run once on startup of script
+
 // Every hour check if the current time is within the ranges
 setInterval(redditInterval, 60 * 60 * 1000);
 
