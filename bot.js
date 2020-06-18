@@ -19,7 +19,7 @@ const COMMAND_COOLDOWN = 1 * 1000;
 // Reddit API link
 const REDDIT_URL = 'https://www.reddit.com/r/baruch.json?limit=10';
 // Channel ID of channel used for posting reddit links
-const REDDIT_POSTING_CHANNEL_ID = '645443827322322965';
+const REDDIT_POSTING_CHANNEL_ID = '723038653751885825';
 
 // Initialize Discord Bot
 const client = new Discord.Client();
